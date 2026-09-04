@@ -1,0 +1,137 @@
+.dashboard {
+  --ink: #23272F;
+  --ink-soft: #5C6472;
+  --rule: #E3E6EC;
+  --surface: #FFFFFF;
+  --todo: #5B6C8F;
+  --doing: #C98A2B;
+  --done: #3F8F6B;
+  --alert: #C0503F;
+
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+  color: var(--ink);
+}
+
+.dashboard__head {
+  margin-bottom: 1.75rem;
+}
+
+.dashboard__title {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+.dashboard__subtitle {
+  margin: 0.35rem 0 0;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+/* Summary cards -------------------------------------------------------- */
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.875rem;
+  margin-bottom: 1.75rem;
+}
+
+.summary-card {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--rule);
+  border-radius: 4px;
+  padding: 1.1rem 1rem;
+}
+
+.summary-card__value {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.summary-card__label {
+  margin: 0.45rem 0 0;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+/* The left rule carries the same colour language as the board columns,
+   so a glance at the card tells you which column it refers to. */
+.summary-card--todo  { border-left-color: var(--todo); }
+.summary-card--doing { border-left-color: var(--doing); }
+.summary-card--done  { border-left-color: var(--done); }
+
+.summary-card--alert {
+  border-left-color: var(--alert);
+  background: #FDF6F5;
+}
+.summary-card--alert .summary-card__value { color: var(--alert); }
+
+/* Charts --------------------------------------------------------------- */
+
+.chart-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.chart-grid__wide {
+  grid-column: 1 / -1;
+}
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 1.25rem;
+}
+
+.panel__head {
+  margin-bottom: 0.75rem;
+}
+
+.panel__title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.panel__note {
+  margin: 0.25rem 0 0;
+  font-size: 0.825rem;
+  color: var(--ink-soft);
+}
+
+.panel__body {
+  min-height: 260px;
+}
+
+.panel__empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 260px;
+  margin: 0;
+  padding: 0 1.5rem;
+  text-align: center;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
+/* Responsive ----------------------------------------------------------- */
+
+@media (max-width: 860px) {
+  .summary-grid { grid-template-columns: repeat(2, 1fr); }
+  .chart-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 420px) {
+  .summary-grid { grid-template-columns: 1fr; }
+}

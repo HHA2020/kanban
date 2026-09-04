@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import Column from "./Column";
 import TaskDisplay from "./TaskDisplay";
+import { useTasks } from "../context/TaskContext";
 
 export default function KanbanBoard() {
-  const [tasks, setTasks] = useState([]);
+  const { tasks, setTasks } = useTasks();
   const [editingTask, setEditingTask] = useState(null);
 
   const todoTasks = tasks.filter((task) => task.status === "ToDo");
