@@ -1,17 +1,30 @@
 import React from "react";
 
-export default function Task({ task, onEdit }) {
+export default function Task({ task, onEdit, onDelete }) {
   return (
     <div className="bg-white p-3 rounded shadow mb-3 border border-gray-200">
       <div className="flex justify-between items-start gap-2">
         <h3 className="font-bold text-md">{task.title}</h3>
-        <button
-          type="button"
-          onClick={() => onEdit(task)}
-          className="text-sm text-blue-600 hover:text-blue-800"
-        >
-          Edit
-        </button>
+        <div className="flex gap-2">
+          <button
+            type="button"
+            onClick={() => onEdit(task)}
+            className="text-sm text-blue-600 hover:text-blue-800"
+          >
+            Edit
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              if (window.confirm(`Delete task \"${task.title}\"?`)) {
+                onDelete(task.id);
+              }
+            }}
+            className="text-sm text-red-600 hover:text-red-800"
+          >
+            Delete
+          </button>
+        </div>
       </div>
       <p className="text-gray-600 text-sm mb-2">{task.description}</p>
 

@@ -23,9 +23,24 @@ export default function KanbanBoard() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <Column title="To Do" tasks={todoTasks} onEdit={setEditingTask} />
-        <Column title="Doing" tasks={doingTasks} onEdit={setEditingTask} />
-        <Column title="Done" tasks={doneTasks} onEdit={setEditingTask} />
+        <Column
+          title="To Do"
+          tasks={todoTasks}
+          onEdit={setEditingTask}
+          onDelete={(taskId) => setTasks((currentTasks) => currentTasks.filter((task) => task.id !== taskId))}
+        />
+        <Column
+          title="Doing"
+          tasks={doingTasks}
+          onEdit={setEditingTask}
+          onDelete={(taskId) => setTasks((currentTasks) => currentTasks.filter((task) => task.id !== taskId))}
+        />
+        <Column
+          title="Done"
+          tasks={doneTasks}
+          onEdit={setEditingTask}
+          onDelete={(taskId) => setTasks((currentTasks) => currentTasks.filter((task) => task.id !== taskId))}
+        />
       </div>
 
       {editingTask && (
